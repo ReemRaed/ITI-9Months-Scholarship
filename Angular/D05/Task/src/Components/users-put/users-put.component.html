@@ -1,0 +1,22 @@
+<div style="text-align: center; margin: auto;" *ngIf="user; else loadingBlock">
+  <form >
+    <div class="form-group" >
+      <input #email value="{{user.email}}" style="width: 500px;margin: auto; margin: 10px;"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+
+    <div class="form-group" >
+      <input #name   value="{{user.name}}" style="width: 500px;margin: 10px;" type="text" class="form-control"  placeholder="Enter name">
+    </div>
+
+
+    <div class="form-group" >
+      <input #Address  value="{{user.Address}}" style="width: 500px;margin: auto; margin: 10px;" type="text" class="form-control"  placeholder="Enter Address">
+    </div>
+
+    <input style="margin: 10px;"  type="button" class="btn btn-primary" (click)="Update(name.value,email.value,Address.value)"   value="Update"/>
+    </form>
+  </div>
+
+  <ng-template #loadingBlock>
+    <h1 style="color: red;">Loading...</h1>
+  </ng-template>

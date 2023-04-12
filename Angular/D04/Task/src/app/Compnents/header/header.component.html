@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Pages</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li >
+          <a [routerLinkActiveOptions]="{exact:true}" class="nav-link" routerLink="/form" routerLinkActive="active" >Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a [routerLinkActiveOptions]="{exact:true}" class="nav-link" routerLink="/" routerLinkActive="active" >Students</a>
+        </li>
+        <li class="nav-item">
+          <a  [routerLinkActiveOptions]="{exact:true}" class="nav-link" routerLink="/details" routerLinkActive="active" >Details</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,19 @@
+<div class="container" >
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <input type="text" placeholder="Enter ur Name"  [(ngModel)]="name"   required>
+    <p style="color: green;" *ngIf="name.length>=3;  else NotValid"> valid</p>
+    <ng-template #NotValid>
+    <p style="color: red;" *ngIf="name">NotValid</p>
+    </ng-template>
+    <hr>
+    <input type="text" placeholder="Enter ur Age"  [(ngModel)]="age"    required>
+    <p style="color: red;" *ngIf="+age >= 40 && +age>20;  else Valid">Not valid</p>
+    <ng-template #Valid>
+    <p style="color: green;" *ngIf="+age">valid</p>
+    </ng-template>
+    <hr>
+    <input type="button" value="Register" (click)="ADD()"/>
+  </div>
+  

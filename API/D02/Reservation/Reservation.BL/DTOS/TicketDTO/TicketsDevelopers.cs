@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Reservation.BL.DTOS.TicketDTO
+{
+    public  class TicketsDevelopers
+    {
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public string Title { get; set; }
+        public int DevelopersCount { get; init; }
+
+    }
+}

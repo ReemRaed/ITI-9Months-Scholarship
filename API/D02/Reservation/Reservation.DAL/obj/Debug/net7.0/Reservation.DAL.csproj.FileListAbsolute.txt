@@ -1,0 +1,14 @@
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\bin\Debug\net7.0\Reservation.DAL.deps.json
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\bin\Debug\net7.0\Reservation.DAL.runtimeconfig.json
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\bin\Debug\net7.0\Reservation.DAL.dll
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\bin\Debug\net7.0\Reservation.DAL.pdb
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.csproj.AssemblyReference.cache
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.AssemblyInfoInputs.cache
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.AssemblyInfo.cs
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.csproj.CoreCompileInputs.cache
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.dll
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\refint\Reservation.DAL.dll
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.pdb
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\Reservation.DAL.genruntimeconfig.cache
+D:\ITISD\ITI-9Months-Scholarship\API\D02\Reservation\Reservation.DAL\obj\Debug\net7.0\ref\Reservation.DAL.dll

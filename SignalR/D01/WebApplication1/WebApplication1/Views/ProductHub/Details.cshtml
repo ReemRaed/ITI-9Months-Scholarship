@@ -1,0 +1,108 @@
+﻿@model WebApplication1.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+          PID  <input type="number" value="@(Model.Id)" id="pID" readonly />
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10" >
+            <input type="number" value="@(Model.Quantity)" id="Qut" />
+        </dd>
+        <label style="color:red;">Comments </label>
+        <ul id="comments" >
+        @foreach(var comment in Model.Comments)
+        {
+            
+            <li>
+                @Html.DisplayFor(modelItem => comment.Text)
+            </li>
+        }
+        </ul>
+    </dl>
+</div>
+<label style="color:red;">Write a Comment </label>
+<input type="text" id="Comment" value=" " />
+<input type="button" value="ADD" onclick="AddComment()" />
+
+
+<input type="button" value="Buy" onclick="SendData()" />
+<ul id="messages">
+</ul>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a href="https://localhost:7264/ProductHub/Index">Back to List</a>
+</div>
+
+@section Scripts{
+
+    <script src="~/lib/microsoft-signalr/signalr.min.js"></script>
+    <script>
+        var connection =
+            new signalR.HubConnectionBuilder().withUrl("/ProductHub").build();
+        connection.start().then(function () {
+            console.log("Connection stablished")
+        });
+
+        function SendData() {
+            var pID = parseInt(document.getElementById("pID").value);
+            var Quantity = parseInt(document.getElementById("Qut").value);
+
+            connection.invoke("BuyProduct", pID, Quantity);
+            console.log(pID,Quantity);
+
+        }
+        function AddComment()
+        {
+            var Comment = document.getElementById("Comment").value;
+            var pID = parseInt(document.getElementById("pID").value);
+
+            connection.invoke("AddComments", Comment, pID);
+
+        }
+        connection.on("QuantityChange", function (n, m) {
+            document.getElementById("messages").innerHTML +=
+                "<li>" + n + ":" + m + "</li>";
+        });
+        connection.on("Quantity Not Enough", function (n, m) {
+            document.getElementById("messages").innerHTML +=
+                "Quantity Not Enough Quantity is "+m;
+        });
+        connection.on("CommentADD", function(n)
+        {
+            document.getElementById("comments").innerHTML +=
+               "<li>"+n;
+        });
+
+    </script>
+
+
+}

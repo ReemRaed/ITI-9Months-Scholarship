@@ -1,0 +1,82 @@
+﻿@page "/Edit/{ID:int}"
+@inject NavigationManager NavManager
+<h3>Editable Form</h3>
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+    public Trainee CurTrainee { get; set; }
+    bool saved ;
+
+    protected override Task OnInitializedAsync()
+    {
+        CurTrainee = MockContext.Trainees.FirstOrDefault(em => em.ID == ID);
+        return base.OnInitializedAsync();
+    }
+    public void ValidHandler()
+    {
+        saved = true;
+    }
+    public void InValidHandler()
+    {
+        saved = false;
+
+    }
+
+}
+
+@if(!saved)
+{
+<EditForm Model="@CurTrainee" OnValidSubmit="@ValidHandler" OnInvalidSubmit="@InValidHandler" >
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+
+    <div class="form-group row">
+        <label for="Name" class="col-form-label">Name: </label>
+        <InputText id="Name" class="form-control" @bind-Value="@CurTrainee.Name" placeholder="Enter your  name"></InputText>
+        <ValidationMessage For="@(() => CurTrainee.Name)" />
+    </div>
+
+
+    <div class="form-group row">
+        <label for="email" class="col-form-label">email: </label>
+        <InputText id="email" class="form-control" @bind-Value="@CurTrainee.email" placeholder="Enter your  email"></InputText>
+        <ValidationMessage For="@(() => CurTrainee.email)" />
+    </div>
+
+
+    <div class="form-group row">
+        <label for="email" class="col-form-label">MobileNo: </label>
+        <InputText id="MobileNo" class="form-control" @bind-Value="@CurTrainee.MobileNo" placeholder="Enter your  MobileNo"></InputText>
+        <ValidationMessage For="@(() => CurTrainee.MobileNo)" />
+    </div>
+
+    <div class="form-group row">
+        <label for="IsGraduated" class="col-form-label">IsGraduated: </label>
+        <InputCheckbox @bind-Value="@CurTrainee.IsGraduated" ></InputCheckbox>
+        <ValidationMessage For="@(() => CurTrainee.IsGraduated)" />
+    </div>
+    <div class="form-group row">
+        <label for="TrackName" class="col-form-label">Track Name: </label>
+        <InputSelect id="TrackName" class="form-control" @bind-Value="@CurTrainee.TrackId">
+            @foreach (var Track in @MockContext.Tracks)
+            {
+                <option value="@Track.Id">@Track.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Trainee</button>
+
+
+    </EditForm>
+}
+else
+{
+    <div class="alert-success">
+        Trainee Saved Successfully......
+    </div>
+    NavManager.NavigateTo("/List");
+    
+}

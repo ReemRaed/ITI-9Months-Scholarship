@@ -1,0 +1,56 @@
+﻿@page "/List"
+<h3>Trainees</h3>
+
+
+<a href="@($"NewTrainee")" class="btn btn-outline-primary"> Craete New </a>
+
+
+@code {
+    private void DeleteItem(int id)
+    {
+        var Trainee=MockContext.Trainees.FirstOrDefault(e=>e.ID==id);
+        MockContext.Trainees.Remove(Trainee);
+    }
+}
+
+@if (MockContext.Trainees==null)
+{
+    <p>Loading.....</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>MobileNo</th>
+                <th>IsGraduated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in MockContext.Trainees)
+            {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Gender</td>
+                <td>@item.email</td>
+                <td>@item.MobileNo</td>
+                <td>@item.IsGraduated</td>
+                <td>
+
+                        <a href="@($"Details/{item.ID}")" class="btn btn-outline-primary"> Details </a>
+                        <a href="@($"Edit/{item.ID}")" class="btn btn-outline-primary"> Edit </a>
+                        <button @onclick="() => DeleteItem(item.ID)">Delete</button>
+
+                </td>
+            </tr>
+                
+            }
+        </tbody>
+    </table>
+}

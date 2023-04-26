@@ -1,0 +1,72 @@
+﻿@page "/NewTrainee"
+<h3>NewTrainee</h3>
+
+@inject NavigationManager NavManager
+
+@code {
+    Trainee trainee = new Trainee();
+
+    public void Valid()
+
+    {
+        MockContext.Trainees.Add(trainee);
+        NavManager.NavigateTo("/List");
+
+
+    }
+
+}
+
+<h3><font style="text-align:center;color:cornflowerblue;"></font>AddTrainee</h3>
+
+<EditForm Model="@trainee"  OnValidSubmit="@Valid">
+
+    <DataAnnotationsValidator ></DataAnnotationsValidator>
+    <div class="form-group">
+
+        <label>ID</label>
+        <InputNumber class="form-control" @bind-Value="trainee.ID"></InputNumber>
+        <ValidationMessage For="@(()=>trainee.ID)" />
+        <br />
+
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="trainee.Name"></InputText>
+        <ValidationMessage For="@(()=>trainee.Name)" />
+        <br />
+
+        <label>Gender</label>
+        <InputSelect @bind-Value="trainee.Gender">
+            
+                <option value="@Gender.Female">Female</option>
+               <option value="@Gender.Male">Male</option>
+
+        </InputSelect>
+
+        <br />
+        <label>email</label>
+        <InputText class="form-control" @bind-Value="trainee.email"></InputText>
+        <ValidationMessage For="@(()=>trainee.email)" />
+        <br />
+        <label>MobileNo</label>
+        <InputText class="form-control" @bind-Value="trainee.MobileNo"></InputText>
+        <ValidationMessage For="@(()=>trainee.MobileNo)" />
+        <br />
+
+        <label for="Track" class="col-form-label">Track Name: </label>
+        <InputSelect id="Track" class="form-control" @bind-Value="@trainee.TrackId">
+            @foreach (var Track in @MockContext.Tracks)
+            {
+                <option value="@Track.Id">@Track.Name</option>
+            }
+        </InputSelect>
+        <br />
+        <label for="IsGraduated" class="col-form-label">IsGraduated: </label>
+        <InputCheckbox @bind-Value="@trainee.IsGraduated"></InputCheckbox>
+        <ValidationMessage For="@(() => trainee.IsGraduated)" />
+    </div>
+    <br />
+    <br />
+    <button class="btn btn-outline-danger" type="submit">Insert</button>
+
+      
+</EditForm>

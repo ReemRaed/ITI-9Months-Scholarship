@@ -1,0 +1,14 @@
+﻿@page "/Page4"
+@using RazorClassLibrary1
+@inject IJSRuntime JsRuntime
+
+<button @onclick="Clicked">Alert Me</button>
+
+@code {
+
+    async Task Clicked()
+    {
+        await JsRuntime.InvokeVoidAsync("alert", "JS in C#");
+
+    }
+}
